@@ -136,13 +136,16 @@ const HeroDesktop = ({
         </motion.div>
 
         {/* Social Box */}
-        <div
+        <motion.div
           className="absolute top-1/2 left-[60%] transform -translate-x-1/2 -translate-y-1/2 
             p-6 h-64 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl"
+          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+          animate={loaded ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
         >
           <div className="grid grid-cols-3 gap-4 w-full h-full place-items-center">
             {socialLinks.map((social, index) => (
-              <a
+              <motion.a
                 key={index}
                 href={social.url}
                 target="_blank"
@@ -150,6 +153,18 @@ const HeroDesktop = ({
                 aria-label={social.name}
                 className="flex items-center justify-center w-20 h-20 rounded-md 
                 bg-white/10 border border-white/20 hover:scale-110 transition-transform"
+                initial={{ opacity: 0, y: 20, scale: 0.5 }}
+                animate={loaded ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{
+                  duration: 0.5,
+                  delay: 1.2 + index * 0.1,
+                  ease: "backOut",
+                }}
+                whileHover={{
+                  scale: 1.15,
+                  rotate: 5,
+                  transition: { duration: 0.2 },
+                }}
               >
                 <Image
                   src={social.icon}
@@ -157,10 +172,10 @@ const HeroDesktop = ({
                   width={48}
                   height={48}
                 />
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Paragraph */}
@@ -205,7 +220,7 @@ const HeroMobile = ({
   currentDate: string;
 }) => {
   return (
-    <div className="sm:hidden  min-h-[100dvh] bg-gray-900 flex flex-col justify-center items-start  relative overflow-hidden">
+    <div className="sm:hidden w-full min-h-[100dvh] bg-gray-900 flex flex-col justify-center items-start  relative overflow-hidden">
       {/* Background */}
       <DarkVeil />
       <div className="absolute inset-0 bg-black/40"></div>
@@ -249,15 +264,15 @@ const HeroMobile = ({
 
         {/* Social Box */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={loaded ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={loaded ? { opacity: 1, scale: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mx-auto w-max z-10"
         >
           <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
             <div className="grid grid-cols-3 gap-3">
               {socialLinks.map((social, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={social.url}
                   target="_blank"
@@ -265,6 +280,14 @@ const HeroMobile = ({
                   aria-label={social.name}
                   className="flex items-center justify-center w-20 h-20 rounded-md 
                 bg-gray-700 border border-gray-600 hover:bg-gray-600 transition-colors"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={loaded ? { opacity: 1, scale: 1 } : {}}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.6 + index * 0.1,
+                    ease: "backOut",
+                  }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Image
                     src={social.icon}
@@ -272,7 +295,7 @@ const HeroMobile = ({
                     width={40}
                     height={40}
                   />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -297,7 +320,7 @@ const HeroMobile = ({
           initial={{ opacity: 0, y: 20 }}
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="w-full z-10 px-6 "
+          className="w-full z-10 px-6"
         >
           <div className="text-left">
             <div className="text-2xl font-semibold text-white">
