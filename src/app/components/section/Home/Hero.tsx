@@ -140,7 +140,7 @@ const Hero = () => {
         >
           <motion.div className="w-full text-center relative overflow-hidden mb-6">
             <h1
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-[11rem] xl:text-[11.5rem] 
+              className="text-5xl sm:text-5xl md:text-6xl lg:text-[7rem] xl:text-[8rem] 
              font-bold text-white/80 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] 
              mb-4 leading-none"
             >
