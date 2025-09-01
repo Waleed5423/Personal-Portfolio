@@ -205,83 +205,111 @@ const HeroMobile = ({
   currentDate: string;
 }) => {
   return (
-    <div className="sm:hidden  min-h-[100dvh] bg-gray-900 flex flex-col justify-center items-start  space-y-8 relative overflow-hidden">
+    <div className="sm:hidden  min-h-[100dvh] bg-gray-900 flex flex-col justify-center items-start  relative overflow-hidden">
       {/* Background */}
       <DarkVeil />
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Title */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="w-full text-center z-10"
-      >
-        <h1 className="text-7xl sm:text-6xl font-semibold text-white">
-          WALEED ZULFIQAR
-        </h1>
-      </motion.div>
+        className="absolute -bottom-20 -right-32 w-80 h-80 rounded-full z-0"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={loaded ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 1, delay: 1.5 }}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(59,130,246,0.6) 0%, rgba(147,51,234,0.4) 30%, transparent 70%)",
+          boxShadow: "0 0 60px 20px rgba(99, 102, 241, 0.5)",
+          filter: "blur(50px)",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-32 -left-32 w-56 h-56 rounded-full z-0"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={loaded ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 1, delay: 1.5 }}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(59,130,246,0.6) 0%, rgba(147,51,234,0.4) 30%, transparent 70%)",
+          boxShadow: "0 0 60px 20px rgba(99, 102, 241, 0.5)",
+          filter: "blur(50px)",
+        }}
+      />
+      <div className="space-y-8 relative w-full flex flex-col justify-center items-center text-center px-2">
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={loaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="w-full text-center z-10"
+        >
+          <h1 className="text-7xl sm:text-6xl font-semibold text-white">
+            WALEED ZULFIQAR
+          </h1>
+        </motion.div>
 
-      {/* Social Box */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="mx-auto w-max z-10"
-      >
-        <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-          <div className="grid grid-cols-3 gap-3">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.name}
-                className="flex items-center justify-center w-20 h-20 rounded-md 
+        {/* Social Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={loaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mx-auto w-max z-10"
+        >
+          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="grid grid-cols-3 gap-3">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.name}
+                  className="flex items-center justify-center w-20 h-20 rounded-md 
                 bg-gray-700 border border-gray-600 hover:bg-gray-600 transition-colors"
-              >
-                <Image
-                  src={social.icon}
-                  alt={social.alt}
-                  width={40}
-                  height={40}
-                />
-              </a>
-            ))}
+                >
+                  <Image
+                    src={social.icon}
+                    alt={social.alt}
+                    width={40}
+                    height={40}
+                  />
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Paragraph */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="w-full z-10 px-6"
-      >
-        <p className="text-gray-300 text-lg leading-relaxed text-left">
-          Full-stack developer with expertise in modern web technologies.
-          Passionate about creating intuitive user experiences and scalable
-          solutions. Currently exploring AI integration in web applications.
-        </p>
-      </motion.div>
+        {/* Paragraph */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={loaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="w-full z-10 px-6"
+        >
+          <p className="text-gray-300 text-lg leading-relaxed text-left">
+            Full-stack developer with expertise in modern web technologies.
+            Passionate about creating intuitive user experiences and scalable
+            solutions. Currently exploring AI integration in web applications.
+          </p>
+        </motion.div>
 
-      {/* Date */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="w-full z-10 px-6 "
-      >
-        <div className="text-left">
-          <div className="text-2xl font-semibold text-white">{currentDate}</div>
-          <div className="text-base text-gray-400 flex items-center mt-1">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></span>
-            AVAILABLE FOR WORK
+        {/* Date */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={loaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="w-full z-10 px-6 "
+        >
+          <div className="text-left">
+            <div className="text-2xl font-semibold text-white">
+              {currentDate}
+            </div>
+            <div className="text-base text-gray-400 flex items-center mt-1">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></span>
+              AVAILABLE FOR WORK
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };
