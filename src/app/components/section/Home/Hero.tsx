@@ -205,7 +205,7 @@ const HeroMobile = ({
   currentDate: string;
 }) => {
   return (
-    <div className="sm:hidden w-full min-h-[100dvh] bg-gray-900 flex flex-col justify-center items-start p-6 space-y-8 relative overflow-hidden">
+    <div className="sm:hidden  min-h-[100dvh] bg-gray-900 flex flex-col justify-center items-start  space-y-8 relative overflow-hidden">
       {/* Background */}
       <DarkVeil />
       <div className="absolute inset-0 bg-black/40"></div>
@@ -258,7 +258,7 @@ const HeroMobile = ({
         initial={{ opacity: 0, y: 20 }}
         animate={loaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="w-full z-10"
+        className="w-full z-10 px-6"
       >
         <p className="text-gray-300 text-lg leading-relaxed text-left">
           Full-stack developer with expertise in modern web technologies.
@@ -272,7 +272,7 @@ const HeroMobile = ({
         initial={{ opacity: 0, y: 20 }}
         animate={loaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="w-full z-10"
+        className="w-full z-10 px-6 "
       >
         <div className="text-left">
           <div className="text-2xl font-semibold text-white">{currentDate}</div>
