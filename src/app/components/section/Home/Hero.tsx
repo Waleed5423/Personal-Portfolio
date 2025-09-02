@@ -74,13 +74,16 @@ const HeroDesktop = ({
       ref={containerRef}
       className="hidden sm:block relative w-full h-screen overflow-hidden"
     >
-      {/* Background */}
-      <motion.div
-        className="fixed inset-0 w-full h-full"
-        style={{ scale: backgroundScale }}
-      >
-        {/* <DarkVeil /> */}
+      {/* Fixed Background */}
+      <motion.div className="absolute inset-0 w-full h-full z-0">
+        {/* You can uncomment this if you want to use the DarkVeil component */}
+        <DarkVeil />
+
+        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40"></div>
+
+        {/* This ensures the background stays fixed in position */}
+        <div className="fixed inset-0 bg-black -z-10"></div>
       </motion.div>
 
       {/* Glowing balls */}
@@ -143,7 +146,7 @@ const HeroDesktop = ({
           animate={loaded ? { opacity: 1, scale: 1, rotate: 0 } : {}}
           transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
         >
-          <div className="grid grid-cols-3 gap-4 w-full h-full place-items-center">
+          <div className="grid grid-cols-3 gap-3 w-full h-full place-items-center">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={index}
@@ -156,14 +159,12 @@ const HeroDesktop = ({
                 initial={{ opacity: 0, y: 20, scale: 0.5 }}
                 animate={loaded ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.2,
                   delay: 1.2 + index * 0.1,
                   ease: "backOut",
                 }}
                 whileHover={{
                   scale: 1.15,
-                  rotate: 5,
-                  transition: { duration: 0.2 },
                 }}
               >
                 <Image
