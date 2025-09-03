@@ -119,7 +119,7 @@ const HeroDesktop = ({
       >
         {/* Title */}
         <motion.div className="w-full text-center my-6">
-          <h1 className="text-5xl md:text-6xl lg:text-[7rem] font-bold text-white/80 leading-none">
+          <h1 className="text-5xl md:text-6xl lg:text-8xl xl:text-[11rem] font-bold text-white/80 leading-none">
             {"WALEED ZULFIQAR".split("").map((letter, i) => (
               <motion.span
                 key={i}
@@ -140,13 +140,13 @@ const HeroDesktop = ({
 
         {/* Social Box */}
         <motion.div
-          className="absolute top-1/2 left-[60%] transform -translate-x-1/2 -translate-y-1/2 
-            p-6 h-64 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl"
+          className="absolute top-1/2 left-[60%] transform -translate-x-1/2 -translate-y-1/2 lg:p-4 xl:p-8 lg:h-max xl:h-max 
+    bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl"
           initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
           animate={loaded ? { opacity: 1, scale: 1, rotate: 0 } : {}}
           transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
         >
-          <div className="grid grid-cols-3 gap-3 w-full h-full place-items-center">
+          <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4 w-full h-full place-items-center">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={index}
@@ -154,8 +154,10 @@ const HeroDesktop = ({
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.name}
-                className="flex items-center justify-center w-20 h-20 rounded-md 
-                bg-white/10 border border-white/20 hover:scale-110 transition-transform"
+                className="flex items-center justify-center 
+           lg:w-16 lg:h-16 xl:w-28 xl:h-28
+          rounded-xl bg-white/10 border border-white/20 
+          hover:scale-110 transition-transform"
                 initial={{ opacity: 0, y: 20, scale: 0.5 }}
                 animate={loaded ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{
@@ -163,50 +165,49 @@ const HeroDesktop = ({
                   delay: 1.2 + index * 0.1,
                   ease: "backOut",
                 }}
-                whileHover={{
-                  scale: 1.15,
-                }}
               >
                 <Image
                   src={social.icon}
                   alt={social.alt}
-                  width={48}
-                  height={48}
+                  width={32} // base
+                  height={32}
+                  className=" lg:w-8 lg:h-8 xl:w-16 xl:h-16"
                 />
               </motion.a>
             ))}
           </div>
         </motion.div>
-      </motion.div>
 
-      {/* Paragraph */}
-      <motion.div
-        className="absolute bottom-8 left-6 md:left-10 z-10 max-w-lg text-white"
-        initial={{ opacity: 0, x: -50 }}
-        animate={loaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, delay: 1.0 }}
-        style={{ y: paraY }}
-      >
-        <p className="text-lg md:text-2xl leading-relaxed">
-          Full-stack developer with expertise in modern web technologies.
-          Passionate about creating intuitive user experiences and scalable
-          solutions. Currently exploring AI integration in web applications.
-        </p>
-      </motion.div>
+        {/* Paragraph */}
+        <motion.div
+          className="absolute bottom-8 left-6 md:left-10 z-10 
+             max-w-sm md:max-w-md lg:max-w-sm xl:max-w-2xl text-white"
+          initial={{ opacity: 0, x: -50 }}
+          animate={loaded ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          style={{ y: paraY }}
+        >
+          <p className="text-base md:text-lg lg:text-lg xl:text-3xl leading-relaxed">
+            Full-stack developer with expertise in modern web technologies.
+            Passionate about creating intuitive user experiences and scalable
+            solutions. Currently exploring AI integration in web applications.
+          </p>
+        </motion.div>
 
-      {/* Date */}
-      <motion.div
-        className="absolute bottom-8 right-6 md:right-10 z-10 text-white text-right"
-        initial={{ opacity: 0, x: 50 }}
-        animate={loaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        style={{ y: dateY }}
-      >
-        <div className="text-xl md:text-4xl font-semibold">{currentDate}</div>
-        <div className="text-sm md:text-base flex items-center justify-end mt-1">
-          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></span>
-          AVAILABLE FOR WORK
-        </div>
+        {/* Date */}
+        <motion.div
+          className="absolute bottom-8 right-6 md:right-10 z-10 text-white text-right"
+          initial={{ opacity: 0, x: 50 }}
+          animate={loaded ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          style={{ y: dateY }}
+        >
+          <div className="text-xl md:text-4xl font-semibold">{currentDate}</div>
+          <div className="text-sm md:text-base flex items-center justify-end mt-1">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></span>
+            AVAILABLE FOR WORK
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
